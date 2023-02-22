@@ -2,6 +2,8 @@ let myName = "Matthew";
 let age = 109;
 let happiness = true;
 
+if ( age === 109 ) console.log('Monkey Time!');
+
 console.log(myName, age, happiness);
 
 const myButton = document.getElementsByTagName('button')[0];
