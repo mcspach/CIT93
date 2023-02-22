@@ -5,10 +5,14 @@ function syntaxExample () {
 }
 
 function doMath (x, y) {
-    let result = x * y;
-    console.log(`${result}, ${x / y}, ${x + y}, ${x - y}`);
-    return result;
+    return result = {
+        multiply: x * y,
+        divide: x / y,
+        subtract: x - y,
+        add: x + y };
+    // return result;
 }
 
 //call or invoke 
-doMath(10, 4);
+let answers = doMath(10, 4);
+console.log(`The function returns an object with 4 answers: ${answers.multiply}, ${answers.divide}, ${answers.add}, ${answers.subtract}`);
