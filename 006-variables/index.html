@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables and DOM</title>
+
+    <style>
+        p {
+            font-weight: bold;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body style="background-color: lightblue;">
+
+<h1>Check the console for stuff</h1>
+<h2 style="font-weight: 400;">You can check the console by right clicking this text and selecting 'Inspect' and then locating the 'Console' tab <span style="text-decoration: underline; font-weight: 800;">or</span> (depending on your browser) select 'View'->'Developer'->'Javascript Console'</h2>
+
+<p>Here are the variables that have been set in JS:</p>
+<p id="myName">Matthew</p>
+<p id="age">31</p>
+<p id="happiness">true</p>
+
+
+    <label for="name">Name</label>
+    <input type="text" name="name" id="nameInput"/> 
+    
+    <label for="age">Age</label>
+    <input type="number" name="age" id="ageInput"/>
+
+    <label for="happiness">Happiness</label>
+    <select name="happiness" id="happinessSelect">
+        <option selected="true" value="true">True</option>
+        <option selected="" value="false">False</option>
+    </select>
+    <button>Submit</button>
+
+
+
+</body>
+<script src="main.js" defer></script>
+</html>
