@@ -33,3 +33,12 @@ const flip = (x) => {
 }
 
 flip(10);
+
+// Comment 
+// I was already using some arrow functions last week. My mistake!
+// This was an excellent week, great to practice functions, think about data types and scope.
+
+doMoreMath = (x, y) => x * y
+
+let moreAnswer = doMoreMath(10,20);
+console.log(`The function returns the multiplied value: ${moreAnswer}`);
