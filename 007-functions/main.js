@@ -42,3 +42,19 @@ doMoreMath = (x, y) => x * y
 
 let moreAnswer = doMoreMath(10,20);
 console.log(`The function returns the multiplied value: ${moreAnswer}`);
+
+//my ARROW functions
+let testFunction = (x, y) => x+y;
+
+const wrapFunction = () => {
+    // Will running a funtion inside another funtion cause issues since they have the same name. 
+    // The issue might be that within the scope of the wrapFunction() there are two definitions of the same function name.
+    let testFunction = (x, y) => {
+        return x-y;
+    }
+    console.log(testFunction(1,2));
+}
+
+wrapFunction();
+
+console.log(testFunction(1,2));
