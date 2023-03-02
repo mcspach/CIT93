@@ -1,5 +1,7 @@
 //Updating the DOM
 
+// let arr = ['mott', 10];
+
 const updateDOM = (input) => {
     const divEl = document.getElementById('output')
     const h2 = document.createElement('h2')
@@ -8,6 +10,7 @@ const updateDOM = (input) => {
 }
 
 // I dont understand why we are multiplying the mpg  by the price, what is that return value representing?
+// Nevermind, you answered that ^
 // I changed it to deviding the price by mpg to show cost per mile.
 const mileage = (miles, gallons = 10, price = 4.0) => updateDOM(price/(miles/gallons))
 
