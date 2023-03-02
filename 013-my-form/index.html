@@ -11,12 +11,18 @@
     <h1>Mileage Calculator</h1>
     <form action="" id="form-input">
         
-        <label for="miles">Miles<input name="miles" id="miles" type="number" required></label>
-        <label for="gallons">Gallons<input name="gallons" id="gallons" type="number" required></label>
-        <label for="price">Price<input name="price" id="price" type="float"></label>
+        <label for="color">Color<input name="color" id="color" type="text" required></label>
+        <label for="size">Size<input name="size" id="size" type="number" required></label>
+        <label for="fontType">Font Type
+            <select name="font" id="font">
+                <option value="serif">Serif</option>
+                <option value="sans-serif">Sans Serif</option>
+            </select>
+        </label>
         <button type="submit">Submit</button>
     </form>
     <div id="output"></div>
+    <div id="count"></div>
 
 </body>
 <script src="main.js" defer></script>

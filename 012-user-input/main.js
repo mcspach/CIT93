@@ -48,11 +48,12 @@ const calculateAvg = () => {
 }
 
 FORM.addEventListener('submit', (e) => {
-    console.log(e)
+    e.preventDefault()
+    trackMPGCost(e.target.miles.value, e.target.gallons.value, e.target.price.value)
+    calculateAvg()
 })
 
 // trackMPGCost(450, 20)
 // trackMPGCost(300, 12, 4.50)
 // trackMPGCost(600, 30, 3.00)
 // trackMPGCost(800, 40, 3.30)
-calculateAvg()
