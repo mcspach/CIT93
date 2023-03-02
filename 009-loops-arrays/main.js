@@ -1,6 +1,6 @@
 //Updating the DOM
-let MPGArray = []
-let CostArray = []
+const MY_MPG = []
+const MY_TRIP_COST = []
 
 const updateDOM = (input) => {
     const divEl = document.getElementById('output')
@@ -9,24 +9,34 @@ const updateDOM = (input) => {
     divEl.appendChild(h2)
 }
 
-let counter = 1
+const calculateSum = (arr) => {
+    let sum = 0
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i]
+    }
+    return sum
+}
 
+let counter = 1
 const trackMPGCost = (miles, gallons, price = 4.0) => {
     const MPG  = Math.floor(miles / gallons)
     const tripCost = Math.floor(gallons * price)
     updateDOM(`Trip ${counter} MPG: ${MPG}, Total Cost: ${tripCost}`)
-    MPGArray.push(MPG)
-    CostArray.push(tripCost)
+    MY_MPG.push(MPG)
+    MY_TRIP_COST.push(tripCost)
     counter ++
 }
 
 const calculateAvg = () => {
-    let totalCost = 0
-    for (let i = 0; i < CostArray.length; i++) { totalCost += CostArray[i] }
-    updateDOM(`Average Trip Cost = ${ Math.round(totalCost / CostArray.length) }`)
+    let totalCost = calculateSum(MY_TRIP_COST)
+    let totalMPG = calculateSum(MY_MPG)
+    let avgMPG = Math.round(totalMPG / MY_MPG.length)
+    let avgCost = Math.round(totalCost / MY_TRIP_COST.length)
+    updateDOM(`Average Trip Cost = ${ avgCost }. Average Miles per Gallon = ${ avgMPG }.`)
 }
 
 trackMPGCost(450, 20)
 trackMPGCost(300, 12, 4.50)
 trackMPGCost(600, 30, 3.00)
+trackMPGCost(800, 40, 3.30)
 calculateAvg()
