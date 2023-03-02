@@ -1,7 +1,7 @@
 //Updating the DOM
+const FORM = document.getElementById('form-input');
 const MY_MPG = []
 const MY_TRIP_COST = []
-const MEASURE = [15, 30, -25, -75, 15]
 
 const updateDOM = (input) => {
     const divEl = document.getElementById('output')
@@ -47,8 +47,12 @@ const calculateAvg = () => {
     updateDOM(`Average Trip Cost = ${ avgCost }. Average Miles per Gallon = ${ avgMPG }.`)
 }
 
-trackMPGCost(450, 20)
-trackMPGCost(300, 12, 4.50)
-trackMPGCost(600, 30, 3.00)
-trackMPGCost(800, 40, 3.30)
+FORM.addEventListener('submit', (e) => {
+    console.log(e)
+})
+
+// trackMPGCost(450, 20)
+// trackMPGCost(300, 12, 4.50)
+// trackMPGCost(600, 30, 3.00)
+// trackMPGCost(800, 40, 3.30)
 calculateAvg()

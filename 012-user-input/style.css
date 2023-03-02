@@ -1,5 +1,9 @@
 input { 
     display: block;
     padding: 10px;
-    min-width: 50%;
+}
+button {
+    margin-top: 10px;
+    background-color: lightblue;
+    color: white;
 }

@@ -1,0 +1,1 @@
+When a user hits submit, we want to pass those variables into the function trackMPGandCost and then run calculateAVG to recalculate those variables. We probably want to change a few things about our funtion that changes the DOM in order that the data gets presented accurately and old data is erased.
