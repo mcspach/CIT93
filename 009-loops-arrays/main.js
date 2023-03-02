@@ -1,36 +1,37 @@
 //Updating the DOM
-let myArr = []
+let MPGArray = []
+let CostArray = []
 
 const updateDOM = (input) => {
     const divEl = document.getElementById('output')
     const h2 = document.createElement('h2')
-    const h22 = document.createElement('h2')
-    if (typeof input === 'object') {
-        h2.textContent = `Total miles per gallon for my car is ${input[0]}. Total trip cost is ${input[1]}.`
-    } else {
-        h22.textContent = input
-    }
+    h2.textContent = input
     
     divEl.appendChild(h2)
-    divEl.appendChild(h22)
 }
 
-// I dont understand why we are multiplying the mpg  by the price, what is that return value representing?
-// Nevermind, you answered that ^
-// I changed it to deviding the price by mpg to show cost per mile.
+let counter = 1
+
 const trackMPGCost = (miles, gallons, price = 4.0) => {
-    const MPG  = miles / gallons
-    const tripCost = gallons * price
-    updateDOM(`MPG: ${MPG}, Total Cost: ${tripCost}`)
-    myArr.push(MPG)
+    const MPG  = Math.round(miles / gallons)
+    const tripCost = Math.round(gallons * price)
+    updateDOM(`Trip ${counter} MPG: ${MPG}, Total Cost: ${tripCost}`)
+    MPGArray.push(MPG)
+    CostArray.push(tripCost)
+    counter ++
 }
 
 const calculateAvg = () => {
     // const avgMPG = (myArr[0] + myArr[1]) / 2
-    updateDOM(`Average MPG = ${(myArr[0] + myArr[1]) / 2}`)
+    // updateDOM(`Average MPG = ${(MPGArray[0] + MPGArray[1]) / 2}`)
+    let total = 0
+    for (let i = 0; i < MPGArray.length; i++) { total += MPGArray[i] }
+    updateDOM(`Average MPG = ${ total / MPGArray.length }`)
 }
+   
 
 trackMPGCost(300, 10)
 trackMPGCost(450, 20)
-updateDOM(myArr)
+trackMPGCost(300, 12)
+trackMPGCost(600, 30)
 calculateAvg()
