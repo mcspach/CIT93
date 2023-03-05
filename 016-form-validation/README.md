@@ -1,0 +1,1 @@
+I got lucky because I never removed the average part of the program, I just added a different div that updated every time new data was added.

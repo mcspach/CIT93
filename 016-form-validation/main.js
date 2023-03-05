@@ -14,19 +14,10 @@ const updateDOM = (input) => {
 const calculateSum = (arr) => {
     let sum = 0
     let i = 0
-
-    // does a do-while and a while loop do the exact same thing?
-
-    // arr.forEach(item => sum += item)
-    // do { 
-    //     sum += arr[i] 
-    //     i++
-    // } while (i < arr.length)
     while (i < arr.length) { 
         sum += arr[i] 
         i++
     } 
-
     return sum
 }
 
@@ -50,20 +41,17 @@ const calculateAvg = () => {
 
 FORM.addEventListener('submit', (e) => {
     e.preventDefault()
-    const errMsg = []
-    if (e.target.miles.value == 0) {
+    let errMsg = []
+    let miles = parseInt(e.target.miles.value)
+    let gallons = parseInt(e.target.gallons.value)
+    let price = parseInt(e.target.price.value)
+    if (miles === 0 || gallons === 0 || price === 0) {
         errMsg.push('Please enter a value greater than zero.')
-    } else {
-        trackMPGCost(e.target.miles.value, e.target.gallons.value, e.target.price.value)
-    }
-    calculateAvg()
-
-    if (errMsg.length > 0) { 
         ERR.innerHTML = errMsg
+    } else {
+        errMsg = []
+        ERR.innerHTML = errMsg
+        trackMPGCost(miles, gallons, price)
+        calculateAvg()
     }
 })
-
-// trackMPGCost(450, 20)
-// trackMPGCost(300, 12, 4.50)
-// trackMPGCost(600, 30, 3.00)
-// trackMPGCost(800, 40, 3.30)
