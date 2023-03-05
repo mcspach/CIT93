@@ -16,3 +16,28 @@ const myObj = {
 
 const greeting = myObj.myGreeting('Hoss')
 console.log(greeting)
+
+const sideKicks = {
+    batman: "Robin",
+    greenHornet: "Kato",
+    mario: "Luigi"
+}
+
+const superHero = {
+    level: 1,
+    name: "BatMan",
+    secretIdentity: "Bruce Wayne",
+    vehicle: "Batmobile",
+    sideKick: sideKicks.batman,
+    priveledgedWhiteMale: true,
+    levelUp: function (level) {
+        console.log(`Previous level: ${this.level}`)
+        this.level++
+    }
+}
+
+console.log(superHero.level)
+superHero.levelUp(superHero.level)
+console.log(`${superHero.name} has a sisekick named ${superHero.sideKick}. and he is currently at level ${superHero.level}`)
+superHero.levelUp(superHero.level)
+console.log(`${superHero.name} has a sisekick named ${superHero.sideKick}. and he is currently at level ${superHero.level}`)
