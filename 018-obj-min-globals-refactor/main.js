@@ -1,4 +1,3 @@
-//Updating the DOM
 let program = {
     mainForm: document.getElementById('form-input'),
     MPG: [],
@@ -53,3 +52,5 @@ program.mainForm.addEventListener('submit', (e) => {
         program.calculateAvg()
     }
 })
+
+//I mislabeled the last push so they are slightly out of order.
