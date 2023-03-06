@@ -1,0 +1,12 @@
+input { 
+    display: block;
+    padding: 10px;
+}
+button {
+    margin-top: 10px;
+    background-color: lightblue;
+    color: white;
+}
+.red {
+    color: red;
+}
