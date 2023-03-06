@@ -58,3 +58,6 @@ program.mainForm.addEventListener('submit', (e) => {
         program.calculateAvg()
     }
 })
+
+// I didn't update the code to match your last video
+// because I prefer having all the helper functions in the program object
