@@ -1,6 +1,5 @@
 #Week 10 Notes
 - MDN docs -> truthy and falsy values
 
-- I think I prefer arrow functions in most cases. Since I've become so accustomed to them, they are now easier to read. But when you directly compare the two syntaxes, a stardard function may be more readable. I guess I'm still undecided.
-
-- 
+- Where do we start rendering the table?
+My first thoughts are, to call a function towards the end of the submission event listener block, inside the ifValid loop, before running calculateAvg(). This function should update the object containing all data. 

@@ -3,6 +3,7 @@
 const FORM = document.getElementById('form-input')
 const ERR = document.getElementById('err')
 const AVG_OUTPUT = document.getElementById('output-avg')
+const TBL = document.getElementById('table-output')
 
 /* MY_DATA is global array that will be updated by the user input with objects from form input values 
 and calculate data */
