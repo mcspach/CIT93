@@ -3,7 +3,7 @@
 const FORM = document.getElementById('form-input')
 const ERR = document.getElementById('err')
 const AVG_OUTPUT = document.getElementById('output-avg')
-const TBL = document.getElementById('table-output')
+const TBL_OUTPUT = document.getElementById('table-output')
 
 /* MY_DATA is global array that will be updated by the user input with objects from form input values 
 and calculate data */
@@ -69,6 +69,19 @@ function isFormValid (miles, gallons, price) {
     }
 }
 
+function renderTable () {
+    const tbl = document.createElement('table')
+    const tr = document.createElement('tr')
+    const headings = ['Miles Driven', 'Gallons Used', 'Price', 'Trip MPG', 'Trip Cost', 'Edit/Delete']
+    headings.forEach((heading) => {
+        let th = document.createElement('th')
+        th.textContent = heading
+        tr.appendChild(th)
+    })
+    tbl.appendChild(tr)
+    TBL_OUTPUT.appendChild(tbl)
+}
+
 FORM.addEventListener('submit', (e) => {
     e.preventDefault()
     const miles = parseInt(e.target.miles.value)
@@ -80,6 +93,7 @@ FORM.addEventListener('submit', (e) => {
         AVG_OUTPUT.textContent = ''
         const dataObj = trackMPGandCost(miles, gallons, price)
         MY_DATA.push(dataObj)
+        renderTable()
         calculateAvg()
     }
     FORM.reset()  
