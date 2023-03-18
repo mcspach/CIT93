@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mileage Program</title>
     <link rel="stylesheet" href="style.css">
-    <title>Objects and Arrays</title>
+    <script src="main.js" defer></script>
 </head>
+
 <body>
-    <h1>Mileage Calculator</h1>
-    <div id="error" class="red"></div>
-    <form action="" id="form-input">
-        
-        <label for="miles">Miles<input name="miles" id="miles" type="number" required></label>
-        <label for="gallons">Gallons<input name="gallons" id="gallons" type="number" required></label>
-        <label for="price">Price<input name="price" id="price" type="float"></label>
-        <button type="submit">Submit</button>
-    </form>
-    <div id="output">
+    <div class="centered">
+        <div id="err" class="error"></div>
+        <form id="form-input">
+            <h1>MPG and Trip Cost Calculator</h1>
+            <labels><input id="miles" name="miles" type="number" required placeholder="Enter Miles"></labels>
+            <labels><input id="gallons" name="gallons" type="number" required placeholder="Enter Gallons"></labels>
+            <labels><input id="price" name="price" type="number" required placeholder="Enter Price"></labels>
+            <button>Submit</button>
+        </form>
+        <div id="output"></div>
+        <div id="output-avg"></div>
     </div>
-    <h3 id="average"></h3>
-
-
 </body>
-<script src="main.js" defer></script>
+
 </html>

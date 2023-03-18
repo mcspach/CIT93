@@ -1,12 +1,11 @@
-input { 
-    display: block;
-    padding: 10px;
-}
-button {
-    margin-top: 10px;
-    background-color: lightblue;
-    color: white;
-}
-.red {
+.centered {
+    margin: 0 auto;
+    width: 700px;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+}  
+
+.error {
     color: red;
 }
