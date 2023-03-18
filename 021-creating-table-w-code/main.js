@@ -69,7 +69,7 @@ function isFormValid (miles, gallons, price) {
     }
 }
 
-function renderTable () {
+function renderTableHeadings () {
     const tr = document.createElement('tr')
     let headings = ['Miles Driven', 'Gallons Used', 'Price', 'Trip MPG', 'Trip Cost', 'Edit/Delete']
     headings.forEach((heading) => {
@@ -79,7 +79,10 @@ function renderTable () {
     })
     let tbl = document.createElement('table')
     tbl.appendChild(tr)
-    TBL_OUTPUT.appendChild(tbl)
+    return tbl
+} 
+function renderData () {
+    const tbl = renderTableHeadings()
     MY_DATA.forEach((obj) => {
         const tr = document.createElement('tr')
         for(key in obj) {
@@ -87,8 +90,17 @@ function renderTable () {
             td.textContent = obj[key]
             tr.appendChild(td)
         }
+        const buttonTD = document.createElement('td')
+        const editBtn = document.createElement('button')
+        editBtn.textContent = 'Edit'
+        const deleteBtn = document.createElement('button')
+        deleteBtn.textContent = 'Delete'
+        buttonTD.appendChild(editBtn)
+        buttonTD.appendChild(deleteBtn)
+        tr.appendChild(buttonTD)
         tbl.appendChild(tr)
     })
+    TBL_OUTPUT.appendChild(tbl)
 }
 
 FORM.addEventListener('submit', (e) => {
@@ -102,7 +114,7 @@ FORM.addEventListener('submit', (e) => {
         AVG_OUTPUT.textContent = ''
         const dataObj = trackMPGandCost(miles, gallons, price)
         MY_DATA.push(dataObj)
-        renderTable()
+        renderData()
         calculateAvg()
     }
     FORM.reset()  
