@@ -71,12 +71,18 @@ function isFormValid (miles, gallons, price) {
 
 function renderTable () {
     const tr = document.createElement('tr')
-    ['Miles Driven', 'Gallons Used', 'Price', 'Trip MPG', 'Trip Cost', 'Edit/Delete']
-    .forEach((heading) => {
+    let headings = ['Miles Driven', 'Gallons Used', 'Price', 'Trip MPG', 'Trip Cost', 'Edit/Delete']
+    headings.forEach((heading) => {
         let th = document.createElement('th')
-        tr.appendChild(th.textContent = heading)
+        th.textContent = heading
+        tr.appendChild(th)
     })
-    TBL_OUTPUT.appendChild(document.createElement('table').appendChild(tr))
+    let tbl = document.createElement('table')
+    tbl.appendChild(tr)
+    TBL_OUTPUT.appendChild(tbl)
+    MY_DATA.forEach((obj) => {
+        
+    })
 }
 
 FORM.addEventListener('submit', (e) => {
