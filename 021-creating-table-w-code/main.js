@@ -81,7 +81,20 @@ function renderTableHeadings () {
     tbl.appendChild(tr)
     return tbl
 } 
+
+function renderEditDeleteBtn () {
+const buttonTD = document.createElement('td')
+        const editBtn = document.createElement('button')
+        editBtn.textContent = 'Edit'
+        const deleteBtn = document.createElement('button')
+        deleteBtn.textContent = 'Delete'
+        buttonTD.appendChild(editBtn)
+        buttonTD.appendChild(deleteBtn)
+        return buttonTD
+}
+
 function renderData () {
+    TBL_OUTPUT.innerHTML = ''
     const tbl = renderTableHeadings()
     MY_DATA.forEach((obj) => {
         const tr = document.createElement('tr')
@@ -90,13 +103,7 @@ function renderData () {
             td.textContent = obj[key]
             tr.appendChild(td)
         }
-        const buttonTD = document.createElement('td')
-        const editBtn = document.createElement('button')
-        editBtn.textContent = 'Edit'
-        const deleteBtn = document.createElement('button')
-        deleteBtn.textContent = 'Delete'
-        buttonTD.appendChild(editBtn)
-        buttonTD.appendChild(deleteBtn)
+        const buttonTD = renderEditDeleteBtn()
         tr.appendChild(buttonTD)
         tbl.appendChild(tr)
     })
