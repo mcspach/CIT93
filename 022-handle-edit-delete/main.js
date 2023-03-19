@@ -37,8 +37,8 @@ function calculateAvg() {
     });
     const avgMPG = Math.round(sumMPG / numberOfObj);
     const avgTripCost = Math.round(sumTripCost / numberOfObj);
-    if (avgMPG != NaN) updateDOM(`Average MPG is ${avgMPG}`, '#output-mpg');
-    if (avgTripCost != NaN) updateDOM(`Average Trip Cost is ${avgTripCost}`, '#output-cost');
+    if (avgMPG > 0) updateDOM(`Average MPG is ${avgMPG}`, '#output-mpg');
+    if (avgTripCost > 0) updateDOM(`Average Trip Cost is ${avgTripCost}`, '#output-cost');
 }
 
 function isFormValid(miles, gallons, price) {
@@ -82,11 +82,7 @@ function renderEditDeleteBtn(index) {
     // click delete: find the right object. delete it.
     deleteBtn.addEventListener('click', () => {
         MY_DATA.splice(index, 1);
-
-        ERR.textContent = '';
-        AVG_OUTPUT_1.textContent = '';
-        AVG_OUTPUT_2.textContent = '';
-
+        clearAverages();
         renderTable();
         calculateAvg();
     })
@@ -104,21 +100,30 @@ function renderEditDeleteBtn(index) {
     return buttonTD;
 }
 
+function clearAverages() {
+    AVG_OUTPUT_1.innerHTML = '';
+    AVG_OUTPUT_2.innerHTML = '';
+}
+
 function renderTable() {
     TBL_OUTPUT.innerHTML = '';
-    const tbl = renderTableHeadings();
-    MY_DATA.forEach((obj, index) => {
-        const tr = document.createElement('tr');
-        for (key in obj) {
-            let td = document.createElement('td');
-            td.textContent = obj[key];
-            tr.appendChild(td);
-        }
-        const buttonTD = renderEditDeleteBtn(index);
-        tr.appendChild(buttonTD);
-        tbl.appendChild(tr);
-    });
-    TBL_OUTPUT.appendChild(tbl);
+    if (MY_DATA.length === 0) {
+        clearAverages();
+    } else {
+        const tbl = renderTableHeadings();
+        MY_DATA.forEach((obj, index) => {
+            const tr = document.createElement('tr');
+            for (key in obj) {
+                let td = document.createElement('td');
+                td.textContent = obj[key];
+                tr.appendChild(td);
+            }
+            const buttonTD = renderEditDeleteBtn(index);
+            tr.appendChild(buttonTD);
+            tbl.appendChild(tr);
+        });
+        TBL_OUTPUT.appendChild(tbl);
+    }
 }
 
 FORM.addEventListener('submit', (e) => {
