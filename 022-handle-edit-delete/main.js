@@ -2,7 +2,8 @@
 
 const FORM = document.getElementById('form-input');
 const ERR = document.getElementById('err');
-const AVG_OUTPUT = document.getElementById('output-avg');
+const AVG_OUTPUT_1 = document.getElementById('output-mpg');
+const AVG_OUTPUT_2 = document.getElementById('output-cost');
 const TBL_OUTPUT = document.getElementById('table-output');
 const MY_DATA = [];
 
@@ -16,7 +17,7 @@ function updateDOM(input, id) {
 function trackMPGandCost(miles, gallons, price) {
     const MPG = Math.round(miles / gallons);
     const tripCost = Math.round(gallons * price);
-    updateDOM(`Miles per gallon  is ${MPG} and trip cost is ${tripCost}`, '#output');
+    // updateDOM(`Miles per gallon  is ${MPG} and trip cost is ${tripCost}`, '#output');
     return {
         miles: miles,
         gallons: gallons,
@@ -36,8 +37,8 @@ function calculateAvg() {
     });
     const avgMPG = Math.round(sumMPG / numberOfObj);
     const avgTripCost = Math.round(sumTripCost / numberOfObj);
-    updateDOM(`Average MPG is ${avgMPG}`, '#output-avg');
-    updateDOM(`Average Trip Cost is ${avgTripCost}`, '#output-avg');
+    if (avgMPG != NaN) updateDOM(`Average MPG is ${avgMPG}`, '#output-mpg');
+    if (avgTripCost != NaN) updateDOM(`Average Trip Cost is ${avgTripCost}`, '#output-cost');
 }
 
 function isFormValid(miles, gallons, price) {
@@ -79,6 +80,16 @@ function renderEditDeleteBtn(index) {
     editBtn.dataset.index = index;
     // add event listener for each button click
     // click delete: find the right object. delete it.
+    deleteBtn.addEventListener('click', () => {
+        MY_DATA.splice(index, 1);
+
+        ERR.textContent = '';
+        AVG_OUTPUT_1.textContent = '';
+        AVG_OUTPUT_2.textContent = '';
+
+        renderTable();
+        calculateAvg();
+    })
     // click edit: put the vlues into the unpit feilds, then the next submit will trigger an update rather than a new data set.
     editBtn.addEventListener('click', function (e) {
         data = MY_DATA[index];
@@ -86,6 +97,7 @@ function renderEditDeleteBtn(index) {
         FORM.gallons.value = data.gallons;
         FORM.price.value = data.price;
         console.log(FORM)
+        MY_DATA.splice(index, 1)
     });
     buttonTD.appendChild(editBtn);
     buttonTD.appendChild(deleteBtn);
@@ -117,7 +129,8 @@ FORM.addEventListener('submit', (e) => {
     const isValid = isFormValid(miles, gallons, price);
     if (isValid) {
         ERR.textContent = '';
-        AVG_OUTPUT.textContent = '';
+        AVG_OUTPUT_1.textContent = '';
+        AVG_OUTPUT_2.textContent = '';
         const dataObj = trackMPGandCost(miles, gallons, price);
         MY_DATA.push(dataObj);
         renderTable();
