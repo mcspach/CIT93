@@ -73,14 +73,19 @@ function renderEditDeleteBtn(index) {
     const buttonTD = document.createElement('td');
     const editBtn = document.createElement('button');
     editBtn.textContent = 'Edit';
+    editBtn.dataset.index = index;
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
+    editBtn.dataset.index = index;
     // add event listener for each button click
     // click delete: find the right object. delete it.
     // click edit: put the vlues into the unpit feilds, then the next submit will trigger an update rather than a new data set.
     editBtn.addEventListener('click', function (e) {
-        console.log(MY_DATA[index]);
-
+        data = MY_DATA[index];
+        FORM.miles.value = data.miles;
+        FORM.gallons.value = data.gallons;
+        FORM.price.value = data.price;
+        console.log(FORM)
     });
     buttonTD.appendChild(editBtn);
     buttonTD.appendChild(deleteBtn);
