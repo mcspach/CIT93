@@ -5,7 +5,14 @@ const ERR = document.getElementById('err');
 const AVG_OUTPUT_1 = document.getElementById('output-mpg');
 const AVG_OUTPUT_2 = document.getElementById('output-cost');
 const TBL_OUTPUT = document.getElementById('table-output');
-const MY_DATA = [];
+
+function getTripData() {
+    const dataJSON = localStorage.getItem('tripdata');
+    if (dataJSON === null) return [];
+    return JSON.parse(dataJSON);
+}
+const MY_DATA = getTripData();
+renderTable();
 
 function updateDOM(input, id) {
     const divEl = document.querySelector(id);
@@ -28,6 +35,7 @@ function trackMPGandCost(miles, gallons, price) {
 }
 
 function calculateAvg() {
+    clearAverages();
     const numberOfObj = MY_DATA.length;
     let sumMPG = 0;
     let sumTripCost = 0;
@@ -82,7 +90,6 @@ function renderEditDeleteBtn(index) {
     // click delete: find the right object. delete it.
     deleteBtn.addEventListener('click', () => {
         MY_DATA.splice(index, 1);
-        clearAverages();
         renderTable();
         calculateAvg();
     })
@@ -138,6 +145,8 @@ FORM.addEventListener('submit', (e) => {
         AVG_OUTPUT_2.textContent = '';
         const dataObj = trackMPGandCost(miles, gallons, price);
         MY_DATA.push(dataObj);
+        localStorage.setItem('tripdata', JSON.stringify(MY_DATA));
+        // const MY_DATA = getTripData();
         renderTable();
         calculateAvg();
     }
