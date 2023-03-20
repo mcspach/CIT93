@@ -6,6 +6,9 @@ const AVG_OUTPUT_1 = document.getElementById('output-mpg');
 const AVG_OUTPUT_2 = document.getElementById('output-cost');
 const TBL_OUTPUT = document.getElementById('table-output');
 
+function saveDataLocal() {
+    localStorage.setItem('tripdata', JSON.stringify(MY_DATA));
+}
 function getTripData() {
     const dataJSON = localStorage.getItem('tripdata');
     if (dataJSON === null) return [];
@@ -101,6 +104,7 @@ function renderEditDeleteBtn(index) {
         FORM.price.value = data.price;
         console.log(FORM)
         MY_DATA.splice(index, 1)
+        saveDataLocal()
     });
     buttonTD.appendChild(editBtn);
     buttonTD.appendChild(deleteBtn);
@@ -145,8 +149,7 @@ FORM.addEventListener('submit', (e) => {
         AVG_OUTPUT_2.textContent = '';
         const dataObj = trackMPGandCost(miles, gallons, price);
         MY_DATA.push(dataObj);
-        localStorage.setItem('tripdata', JSON.stringify(MY_DATA));
-        // const MY_DATA = getTripData();
+        saveDataLocal()
         renderTable();
         calculateAvg();
     }
