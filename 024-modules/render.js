@@ -1,7 +1,12 @@
 import { saveDataLocal } from './storage.js';
+import { calculateAvg } from './handleForm.js';
 
+/* Global const for updating DOM elements by their id */
+const ERR = document.getElementById('err');
 const FORM = document.getElementById('form-input');
 const TBL_OUTPUT = document.getElementById('table-output');
+const AVG_OUTPUT_1 = document.getElementById('output-mpg');
+const AVG_OUTPUT_2 = document.getElementById('output-cost');
 
 function renderTableHeadings() {
   const tr = document.createElement('tr');
@@ -72,4 +77,4 @@ function renderTable(MY_DATA) {
   }
 }
 
-export { renderTable, FORM };
+export { renderTable, ERR, FORM, AVG_OUTPUT_1, AVG_OUTPUT_2, clearAverages };
