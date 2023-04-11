@@ -1,3 +1,4 @@
+import { saveDataLocal, getTripData } from './storage.js';
 import { renderTable, FORM } from './render.js';
 /* Global const for updating DOM elements by their id*/
 
@@ -7,14 +8,6 @@ const AVG_OUTPUT_1 = document.getElementById('output-mpg');
 const AVG_OUTPUT_2 = document.getElementById('output-cost');
 // const TBL_OUTPUT = document.getElementById('table-output');
 
-function saveDataLocal() {
-    localStorage.setItem('tripdata', JSON.stringify(MY_DATA));
-}
-function getTripData() {
-    const dataJSON = localStorage.getItem('tripdata');
-    if (dataJSON === null) return [];
-    return JSON.parse(dataJSON);
-}
 const MY_DATA = getTripData();
 renderTable(MY_DATA);
 
@@ -83,7 +76,7 @@ FORM.addEventListener('submit', (e) => {
         AVG_OUTPUT_2.textContent = '';
         const dataObj = trackMPGandCost(miles, gallons, price);
         MY_DATA.push(dataObj);
-        saveDataLocal();
+        saveDataLocal(MY_DATA);
         renderTable(MY_DATA);
         calculateAvg(MY_DATA);
     }

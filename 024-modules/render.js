@@ -1,3 +1,5 @@
+import { saveDataLocal } from './storage.js';
+
 const FORM = document.getElementById('form-input');
 const TBL_OUTPUT = document.getElementById('table-output');
 
@@ -37,8 +39,7 @@ function renderEditDeleteBtn(MY_DATA, index) {
     FORM.price.value = data.price;
     console.log(FORM);
     MY_DATA.splice(index, 1);
-    // saveDataLocal();
-    localStorage.setItem('tripdata', JSON.stringify(MY_DATA));
+    saveDataLocal(MY_DATA);
   });
   buttonTD.appendChild(editBtn);
   buttonTD.appendChild(deleteBtn);
