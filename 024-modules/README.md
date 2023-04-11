@@ -1,5 +1,9 @@
-# Week 11
+#Week 11 Refactor with Modules
 
-This was alot of fun. I have never had the chance to use localStorage, but have always been interested in making use of it. 
+Question:
+Why are you imorting the various JS files into your html? Isnt the whole point of modules that you only need to import the main.js, and all other code will come along with it?
 
-Im curious about the end, you mentioned that we had previously been working with volatile data and now we are working with persisent data by making use of localStorage. Im guessing the terms have a wide range of meanings, and that local storage is somewhere in the middle of volatile and persistent... is that correct or am I misinderstanding the vocab?
+What if we ended up with 900 js files, are we going to import every single one into every single html file? I have only added main.js as an html import thoughout this excercise and never had trouble because of it. By importing the necessary code in the js import statements, I believe we are illiminating the need to import into the html. 
+
+Please correct me if I misunderstand something about this!
+

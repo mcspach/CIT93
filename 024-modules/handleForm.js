@@ -1,3 +1,4 @@
+// funny we named our files about the same thing
 import { ERR, clearAverages } from './render.js';
 
 function updateDOM(input, id) {
