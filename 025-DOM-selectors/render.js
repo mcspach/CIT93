@@ -44,6 +44,12 @@ function renderEditDeleteBtn(MY_DATA, index) {
     FORM.price.value = data.price;
     console.log(FORM);
     MY_DATA.splice(index, 1);
+    //disable buttons in table
+    const formButtons = TBL_OUTPUT.querySelectorAll('button');
+    console.log(formButtons);
+    formButtons.forEach(function (btn) {
+      btn.disabled = true;
+    });
     saveDataLocal(MY_DATA);
   });
   buttonTD.appendChild(editBtn);
@@ -77,4 +83,4 @@ function renderTable(MY_DATA) {
   }
 }
 
-export { renderTable, ERR, FORM, AVG_OUTPUT_1, AVG_OUTPUT_2, clearAverages };
+export { renderTable, ERR, FORM, AVG_OUTPUT_1, AVG_OUTPUT_2, TBL_OUTPUT, clearAverages };

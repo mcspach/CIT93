@@ -1,5 +1,5 @@
 // funny we named our files about the same thing
-import { ERR, clearAverages } from './render.js';
+import { ERR, TBL_OUTPUT, clearAverages } from './render.js';
 
 function updateDOM(input, id) {
   const divEl = document.querySelector(id);
@@ -11,7 +11,11 @@ function updateDOM(input, id) {
 function trackMPGandCost(miles, gallons, price) {
   const MPG = Number((miles / gallons).toFixed(2));
   const tripCost = Number((gallons * price).toFixed(2));
-  // updateDOM(`Miles per gallon  is ${MPG} and trip cost is ${tripCost}`, '#output');
+  //enable buttons in table
+  const formButtons = TBL_OUTPUT.querySelectorAll('button');
+  formButtons.forEach(function (btn) {
+    btn.disabled = false;
+  });
   return {
     miles: miles,
     gallons: gallons,

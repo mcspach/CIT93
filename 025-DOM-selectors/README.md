@@ -8,3 +8,7 @@ If I know that there will never be any more buttons added to this application, I
 Then we can iterate over all the buttons in the table and each of them can be disabled. 
 I beleive its a boolean attribute, so something like `button.disabled = true`. 
 Then once the form is submitted, we can remove the attribute or change the value back to false.
+
+
+Part 4:
+1. Why are you using lower_snake_case for the 'disable_edit' variable? Should be 'disabledButtons', or something more descriptive in lowerCamelCase, right?
