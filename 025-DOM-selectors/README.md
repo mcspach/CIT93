@@ -12,3 +12,6 @@ Then once the form is submitted, we can remove the attribute or change the value
 
 Part 4:
 1. Why are you using lower_snake_case for the 'disable_edit' variable? Should be 'disabledButtons', or something more descriptive in lowerCamelCase, right?
+2. I had to change my approach to use query selectorAll ratheer than ElementsByTagName because I was having trouble iterating over the HTML collection and it does the same thing as far as I can tell.
+3. I also had to export/import the TBl_OUTPUT varible from render.js into handleForm.js to allow the submission  to remove the disabled attribute. 
+4. Your way with adding the classes in JS also seems to work well. Nice lesson, this was fun!
