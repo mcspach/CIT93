@@ -13,7 +13,7 @@ Once you have working code or you want to see a video of me discussion my code f
 
 FORM
 
-In your HTML create the form for getting input from the user and implement the required attribute (we will do validation next week). 
+[X] In your HTML create the form for getting input from the user and implement the required attribute (we will do validation next week). 
 In addition to the input, use a checkbox or radio button for the user input.  
-Code an eventlisteners make sure you getting the correct inputs by showing them on the console or updateDOM function, next week you will integrate the functions.
-Once you have working code or you want to see a video of me going over my code for the function and forms, submit with commit "my form" and submit your commit history URL. Make sure you tell me you want the video, because it will NOT be public on my youtube.com channel. 
+[X]Code an eventlisteners make sure you getting the correct inputs by showing them on the console or updateDOM function, next week you will integrate the functions.
+[X] Once you have working code or you want to see a video of me going over my code for the function and forms, submit with commit "my form" and submit your commit history URL. Make sure you tell me you want the video, because it will NOT be public on my youtube.com channel. 

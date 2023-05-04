@@ -6,12 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
-    <title>App</title>
+    <title>FOOD CALCULATOR</title>
 </head>
 <body>
-    <div id="input"></div>
+    <h1>FOOD CALCUATOR</h1>
+    <div id="input">
+      <h2>How hungry are you?</h2>
+      <form id="hungryForm">
+        <label>Hunger Level<input type="number" name="number" id="number" min="1" max="10" required></label>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div id="macros">
+      <h2>Here's your macros:</h2>
+      <!-- macros will render with JS -->
+      <div id="macros-output"></div>
+    </div>
+    <div>
+      <h2>Update your macros be adding new food in grams:</h2>
+      <form id="macrosForm">
+        <label>Protein<input type="number" name="protein" id="protein" placeholder="0"></label>
+        <label>Carbs<input type="number" name="carbs" id="carbs" placeholder="0"></label>
+        <label>Fat<input type="number" name="fat" id="fat" placeholder="0"></label>
+        <input type="submit" value="Add Macros">
+    </div>
     <div id="output">
-    
+        <!-- Eating status will display with JS -->
     </div>
 </body>
 </html>
