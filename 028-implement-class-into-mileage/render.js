@@ -46,7 +46,6 @@ function renderEditDeleteBtn(MY_DATA, index) {
     MY_DATA.splice(index, 1);
     //disable buttons in table
     const formButtons = TBL_OUTPUT.querySelectorAll('button');
-    console.log(formButtons);
     formButtons.forEach(function (btn) {
       btn.disabled = true;
     });

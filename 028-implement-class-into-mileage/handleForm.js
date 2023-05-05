@@ -1,4 +1,4 @@
-// funny we named our files about the same thing
+import { Trip } from './trip.js';
 import { ERR, TBL_OUTPUT, clearAverages } from './render.js';
 
 function updateDOM(input, id) {
@@ -36,14 +36,14 @@ function calculateAvg(MY_DATA) {
   // });
   const sums = MY_DATA.reduce(function (sum, obj) {
     return {
-      MPG: sum.MPG + obj.MPG,
-      tripCost: sum.tripCost + obj.tripCost
+      MPG: sum.MPG + obj._MPG,
+      tripCost: sum.tripCost + obj._tripCost
     };
   });
   const avgMPG = Number((sums.MPG / numberOfObj).toFixed(2));
   const avgTripCost = Number((sums.tripCost / numberOfObj).toFixed(2));
-  if (avgMPG > 0) updateDOM(`Average MPG is ${avgMPG}`, '#output-mpg');
-  if (avgTripCost > 0) updateDOM(`Average Trip Cost is ${avgTripCost}`, '#output-cost');
+  updateDOM(`Average MPG is ${avgMPG}`, '#output-mpg');
+  updateDOM(`Average Trip Cost is ${avgTripCost}`, '#output-cost');
 }
 
 function isFormValid(miles, gallons, price) {

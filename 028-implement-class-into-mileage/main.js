@@ -1,7 +1,7 @@
 import { saveDataLocal, getTripData } from './storage.js';
 import { renderTable, ERR, FORM, AVG_OUTPUT_1, AVG_OUTPUT_2 } from './render.js';
 import { isFormValid, trackMPGandCost, calculateAvg } from './handleForm.js';
-
+import { Trip } from './trip.js';
 
 /* Renders initial table with data from local storage */
 const MY_DATA = getTripData();
@@ -18,8 +18,8 @@ FORM.addEventListener('submit', (e) => {
         ERR.textContent = '';
         AVG_OUTPUT_1.textContent = '';
         AVG_OUTPUT_2.textContent = '';
-        const dataObj = trackMPGandCost(miles, gallons, price);
-        MY_DATA.push(dataObj);
+        const trip = new Trip(miles, gallons, price);
+        MY_DATA.push(trip);
         saveDataLocal(MY_DATA);
         renderTable(MY_DATA);
         calculateAvg(MY_DATA);
