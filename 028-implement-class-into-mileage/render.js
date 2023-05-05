@@ -39,9 +39,9 @@ function renderEditDeleteBtn(MY_DATA, index) {
   // click edit: put the vlues into the unpit feilds, then the next submit will trigger an update rather than a new data set.
   editBtn.addEventListener('click', function () {
     const data = MY_DATA[index];
-    FORM.miles.value = data.miles;
-    FORM.gallons.value = data.gallons;
-    FORM.price.value = data.price;
+    FORM.miles.value = data._miles;
+    FORM.gallons.value = data._gallons;
+    FORM.price.value = data._price;
     console.log(FORM);
     MY_DATA.splice(index, 1);
     //disable buttons in table

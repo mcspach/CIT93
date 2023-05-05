@@ -6,7 +6,7 @@ import { Trip } from './trip.js';
 /* Renders initial table with data from local storage */
 const MY_DATA = getTripData();
 renderTable(MY_DATA);
-calculateAvg(MY_DATA);
+if (MY_DATA.length > 0) calculateAvg(MY_DATA);
 
 FORM.addEventListener('submit', (e) => {
     e.preventDefault();

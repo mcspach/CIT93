@@ -17,3 +17,7 @@ It looks like that's what you are doing in the rest of the video.
 QUESTION: A few weeks ago, you were importing each module separately and I aksed you why you were doing that, as you only need the main.js, since everything else is imported in using js imports. I thought you'd mentioned that yes, only the main.js needs to be imported. Now you are importing in every file again. Did I miss something?
 
 
+Part 3:
+- I got rid of the error about an empty array just by checking if mydata was not empty before running calculaterAverages.
+- Adding the underscores removed the error from the edit buttons.
+- Fo,lowing along with your video, adding the underscores again fixed the reduce function and related functions.
