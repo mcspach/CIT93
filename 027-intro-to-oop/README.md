@@ -1,4 +1,7 @@
 Week 13
 OOP
 
-Prototype chain is awesome! THis week of lessons is fun so far!
+I am using age in place of address. Hope that doesn't bother you. 
+Its just what I wrote originally nd so I just went with it.
+
+As far as the undefined errors go, they are coming up as undefined because they are now declared in the constructor using an underscore, but referenced in the methods without one. By adding the underscore to the variable in the method we can eliminate the errors.
