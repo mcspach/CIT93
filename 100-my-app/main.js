@@ -1,4 +1,5 @@
 //GLOBAL OBJECT
+const FORM = document.getElementById('hungryForm');
 const DATA = {
   hungryForm: document.getElementById('hungryForm'),
   macrosForm: document.getElementById('macrosForm'),
@@ -42,6 +43,7 @@ function updateMacros(newData) {
 
 function setTime() {
   let currentDate = new Date();
+  //if current date is not the same as previous update, bring macros down to zero and save date in macros object.
   return currentDate.getHours() + ":" + currentDate.getMinutes();
 }
 
@@ -78,5 +80,6 @@ DATA.hungryForm.addEventListener('submit', (event) => {
   decisionMaker(hungryLevel);
 });
 
+//displays today's macros on initial load
 renderMacros();
 // decisionMaker(6);
