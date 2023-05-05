@@ -4,10 +4,14 @@ class Person {
     this._lastName = lastName || "Spachy";
     this._age = age || 100;
   }
-  getfirstName() { return this._firstName; }
-  setfirstName(firstName) { this._firstName = firstName; }
+  getFirstName() { return this._firstName; }
+  setFirstName(firstName) { this._firstName = firstName; }
+  getLastName() { return this._lastName; }
+  setLastName(lastName) { this._lastName = lastName; }
+  getAge() { return this._age; }
+  setAge(age) { this._age = age; }
   greet() {
-    console.log(`Hello, my name is ${this.getfirstName()}. I am ${this._age} years old.`);
+    console.log(`Hello, my name is ${this.getFirstName()}. I am ${this.getAge()} years old.`);
   }
 }
 
@@ -16,8 +20,10 @@ class Student extends Person {
     super(firstName, lastName, age);
     this._classList = classList || [];
   }
+  getClassList() { return this._classList; }
+  setClassList(classList) { this._classList = classList; }
   greet() {
-    console.log(`Hello, my name is ${this._firstName}. I am ${this._age} years old. I am taking ${this._classList.join(', ')} this semester.`);
+    console.log(`Hello, my name is ${this.getFirstName()}. I am ${this.getAge()} years old. I am taking ${this.getClassList().join(', ')} this semester.`);
   }
 }
 
