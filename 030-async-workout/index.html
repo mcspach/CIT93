@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WORKOUT</title>
+</head>
+
+<body>
+  <h1>WORKOUT</h1>
+  <!-- form with id form, inputs/labels for 'Type of Exercise', 'Target Number of Reps', 'Time in Minutes', and a submit button -->
+  <form id="form">
+    <label for="exercise">Type of Exercise</label>
+    <input type="text" id="exercise" name="exercise" required>
+    <label for="reps">Target Number of Reps</label>
+    <input type="number" id="reps" name="reps" required>
+    <label for="time">Time in Minutes</label>
+    <input type="number" id="time" name="time" required>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="output">
+  </div>
+
+  <!-- import main.js -->
+  <script src="main.js"></script>
+  <style>
+    html {
+      font-family: sans-serif;
+    }
+
+    form>input,
+    form>label,
+    form>button {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  </style>
+</body>
+
+</html>

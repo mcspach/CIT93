@@ -1,5 +1,4 @@
 # Week 14
 Asynchronous Code
 
-Note: pizza still comes up undefined with a setTimeout value of only 1 millisecond
-
+Callback for thing 1 is thing 2, the callback for thing 2 is thing 3.
