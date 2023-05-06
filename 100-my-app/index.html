@@ -18,18 +18,20 @@
       </form>
     </div>
     <div id="macros">
-      <h2>Here's your macros:</h2>
+      <h2>Here's your daily macros:</h2>
       <!-- macros will render with JS -->
       <div id="macros-output"></div>
     </div>
     <div>
       <h2>Update your macros be adding new food in grams:</h2>
+      <p>Hint: you can use negative numbers to decrease.</p>
       <form id="macrosForm">
-        <label>Protein<input type="number" name="protein" id="protein" type="number" step="1" placeholder="0" min="0"
+        <label>Protein<input type="number" name="protein" id="protein" type="number" step="1" placeholder="0" min="-1000"
             max="4000"></label>
-        <label>Carbs<input type="number" name="carbs" id="carbs" type="number" step="1" placeholder="0" min="0"
+        <label>Carbs<input type="number" name="carbs" id="carbs" type="number" step="1" placeholder="0" min="-1000"
             max="4000"></label>
-        <label>Fat<input type="number" name="fat" id="fat" type="number" step="1" placeholder="0" min="0" max="4000"></label>
+        <label>Fat<input type="number" name="fat" id="fat" type="number" step="1" placeholder="0" min="-1000"
+            max="4000"></label>
         <input type="submit" value="Add Macros">
     </div>
     <div id="output">

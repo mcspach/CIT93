@@ -2,10 +2,14 @@
 
 This application will decide whether or not to eat, and what Macro nutrient to induilge in. It first decides whether or not we are within eating hours, then decides whether or not we are hungry. If those two guards are passed, then the inner loop recommends different options based on which nutrients have been consumed at higher levels that day.
 
-Week 12 Instructions:
+Week 13:
+- Right now, there are two different parts of my app. One is the user enters a hunger level and then the app uses the current macros from that day, hunger level, and time(using the Date Api) to return a message of what kind of food to eat. Second, the user can add new numbers to their daily macros intake.
+- You metioned that you want an update function. So, I am wondering if you will accept that the user has the option to update their daily macros by filling out the macros form with positive or negative numbers? I'm not sure what delete function would be helpful here.
 
-[X] Make sure you use HTML input attitudes required for inputs (which is most likely all the inputs) and then write some validation code to validate user input. (I beleive by setting the steps, required, type, min and max I have successfully eliminated much need to having extra validations in my JS)
-[X] Now take the inputs from the form and pass them into the function you wrote last week. (My functions were already accepting form inputs last week)
-[X] Have your returned object from last week be pushed into an array if form input is valid, we will start to implement render to the DOM next week, for now you can just call the updateDOM on the user input to show the output on the page. (My macros appear inside the macros form, and my rresult from the hunger meter renders each time you submit that form, using a combo of timestamp / macro values / and hunger level.)
-[X] Make sure you clear the inputs fields.
-Once you have working code or you want to see a video of me writing code for the function and forms, submit with commit "my form input" and submit your commit history URL.
+In order to have more complex and interesting dom-rendering I would like to log each time the user updates their macros, saving how much of each was added at what time.
+Then, when its a new day, the app will adjust and reset the macros.
+THe important part is that the app renders an answer when the user enters hunger level. By entering a new hunger level, the app will rerender the message of what to eat. 
+The last thing the app needs to render is the full daily count for each of the three macros. 
+
+EXTRAS:
+Added a bunch of math that actually saves the data each time you add a new macro. Finally added the reset to both forms to make sure they clear after being processed.

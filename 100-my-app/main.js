@@ -3,21 +3,24 @@ const FORM = document.getElementById('hungryForm');
 const DATA = {
   hungryForm: document.getElementById('hungryForm'),
   macrosForm: document.getElementById('macrosForm'),
-  macros: {
-    fat: 0,
-    carbs: 0,
-    protein: 0
-  }
+  macros: []
 }
 
 function renderMacros() {
-  const macros = DATA.macros;
+  let macros = setDailyMacros();
+  let totalFat = 0;
+  let totalCarbs = 0;
+  let totalProtein = 0;
+  macros.forEach(macro => {
+    totalFat += macro.fat;
+    totalCarbs += macro.carbs;
+    totalProtein += macro.protein;
+  });
   let divEl = document.getElementById('macros-output');
-  console.log(divEl);
   let macrosHTML = `
-      <p>Fat: ${macros.fat}</p>
-      <p>Carbs: ${macros.carbs}</p>
-      <p>Protein: ${macros.protein}</p>
+      <p>Fat: ${totalFat}</p>
+      <p>Carbs: ${totalCarbs}</p>
+      <p>Protein: ${totalProtein}</p>
   `;
   divEl.innerHTML = '';
   divEl.insertAdjacentHTML('beforeend', macrosHTML);
@@ -31,14 +34,22 @@ function renderMessage(content, id) {
   divEl.appendChild(p);
 }
 
-function updateMacros(newData) {
-  fat = parseInt(newData.fat) || 0;
-  carbs = parseInt(newData.carbs) || 0;
-  protein = parseInt(newData.protein) || 0;
-  DATA.macros.fat = DATA.macros.fat + fat;
-  DATA.macros.carbs = DATA.macros.carbs + carbs;
-  DATA.macros.protein = DATA.macros.protein + protein;
+function updateMacros(fat, carbs, protein) {
+  let currentDate = new Date();
+  let newMacro = {
+    fat: fat,
+    carbs: carbs,
+    protein: protein,
+    date: currentDate.getDate(),
+    time: setTime()
+  };
+  DATA.macros.push(newMacro);
   renderMacros();
+}
+
+function setDailyMacros() {
+  let currentDate = new Date();
+  return DATA.macros.filter(macro => macro.date === currentDate.getDate());
 }
 
 function setTime() {
@@ -48,12 +59,13 @@ function setTime() {
 }
 
 const decisionMaker = (hungerLevel) => {
+  let macros = setDailyMacros();
   let time = setTime();
   if (time >= "11:00" && time <= "21:00") {
     if (hungerLevel > 5) {
-      if (DATA.macros.fat < DATA.macros.carbs && DATA.macros.protein < DATA.macros.carbs) {
+      if (macros.fat < macros.carbs && macros.protein < macros.carbs) {
         renderMessage(`Good job today.You can eat anything you want.`, `output`);
-      } else if (DATA.macros.fat > DATA.macros.protein) {
+      } else if (macros.fat > macros.protein) {
         renderMessage(`Go eat something high in protein.`, `output`);
         } else {
         renderMessage(`Go eat something high in fat.`, `output`);
@@ -66,11 +78,14 @@ const decisionMaker = (hungerLevel) => {
   }
 }
 
-DATA.macrosForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const formData = new FormData(event.target);
-  const data = Object.fromEntries(formData);
-  updateMacros(data);
+DATA.macrosForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  console.log(e.target);
+  const fat = Number(e.target.fat.value);
+  const carbs = Number(e.target.carbs.value);
+  const protein = Number(e.target.protein.value);
+  updateMacros(fat, carbs, protein);
+  DATA.macrosForm.reset();
 });
 
 DATA.hungryForm.addEventListener('submit', (event) => {
@@ -78,8 +93,8 @@ DATA.hungryForm.addEventListener('submit', (event) => {
   const hungryLevel = event.target[0].value;
   console.log(hungryLevel);
   decisionMaker(hungryLevel);
+  DATA.hungryForm.reset();
 });
 
 //displays today's macros on initial load
 renderMacros();
-// decisionMaker(6);
