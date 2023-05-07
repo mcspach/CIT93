@@ -62,9 +62,12 @@ fun1()
 
 function fetchData() {
   return new Promise(function (resolve, reject) {
-    fetch('https://api.weather.gov/gridpoints/OKX/35,35/forecast')
+    const fresno = 'https://api.weather.gov/points/36.746841,-119.772591';
+    // const example = 'https://api.weather.gov/gridpoints/HNX/53,100/forecast';
+    fetch(fresno)
       .then(response => response.json())
-      .then(data => console.log(data.properties.periods[1].shortForecast));
+      // .then(data => console.log(data.properties.periods[1].shortForecast));
+      .then(data => console.log(data));
   });
 }
 
