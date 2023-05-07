@@ -39,3 +39,8 @@ At times I have found ChatGPT helpful when building something, and other times i
 
 ## Video
 
+It's interesting to hear what some of the people in the video had to say. In my opinion there will definitely be alot of jobs that are eventually illiminated because of the use of AI. But that has been true throughout history, when certain jobs are illiminated, new jobs appear. And it may be that if technology advances, people will be able to spend less time working, which I dont consider a huge loss. 
+
+Also, there is very little AI that I have seen that does not require a great deal of human input, or actions takern in orde to function on a high level. It is definitely improving at an insane rate, but for example I dont think anyone would be that excited about an AI painter that actually painted on canvas with oil paints. BEcause that painter would not be able to paint a specific painting catered to each target demographic, and even if so it would truly decrease the value of the object by removing th human element. TOtal tangent but just an example of how human will remain involved.
+
+Not sure if you are aware but there is currently a writers strike going on in the film  industry and one of the greinances is the use of AI in writing for television. Personally, I think it is silly to try and fight againt the use of technology. Im sure those writers use a number of AI tools like autocorrect and google search just to name a few. 
