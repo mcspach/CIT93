@@ -1,0 +1,10 @@
+div#photos {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+img {
+  width: 30vw;
+  height: auto;
+  border: 1.2vw solid yellow;
+}
