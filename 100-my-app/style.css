@@ -1,0 +1,21 @@
+body, div {
+  margin: 12px !important;
+  padding: 12px;
+  border: 1px solid blue;
+  border-radius: 12px;
+}
+
+div#output {
+  font-size: large;
+  font-weight: bold;
+  color: orange;
+  text-align: center;
+}
+
+label>input {
+  margin: 5px;
+}
+
+table {
+  width: 100%;
+}

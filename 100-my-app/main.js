@@ -3,7 +3,10 @@ const FORM = document.getElementById('hungryForm');
 const DATA = {
   hungryForm: document.getElementById('hungryForm'),
   macrosForm: document.getElementById('macrosForm'),
-  macros: []
+  dailyLog: document.getElementById('log'),
+  hungryLog: document.getElementById('hungryLog'),
+  macros: [],
+  hungryLevels: []
 }
 
 function renderMacros() {
@@ -26,6 +29,42 @@ function renderMacros() {
   divEl.insertAdjacentHTML('beforeend', macrosHTML);
 }
 
+function renderMacroLog() {
+  DATA.dailyLog.innerHTML = '';
+  // Headings
+  const tr = document.createElement('tr');
+  let headings = ['Fat', 'Protein', 'Carbs', 'Time', 'Actions'];
+  headings.forEach((heading) => {
+    let th = document.createElement('th');
+    th.textContent = heading;
+    tr.appendChild(th);
+  });
+  let tbl = document.createElement('table');
+  tbl.appendChild(tr);
+
+  // Data
+  let macros = setDailyMacros();
+
+  macros.forEach((obj, index) => {
+    const macRow = document.createElement('tr');
+    for (key in obj) {
+      if (key !== 'date') {
+        let td = document.createElement('td');
+        td.textContent = obj[key];
+        macRow.appendChild(td);
+      }
+    }
+    // const buttonTD = renderEditDeleteBtn(index);
+    // const buttonTD = document.createElement('td');
+    // buttonTD.innerHTML = '<button>Edit</button><button>Delete</button>';
+    // tr.appendChild(buttonTD);
+    tbl.appendChild(macRow);
+  });
+  console.log(tbl);
+  console.log(DATA.dailyLog);
+  DATA.dailyLog.appendChild(tbl);
+};
+
 function renderMessage(content, id) {
   const divEl = document.getElementById(id);
   const p = document.createElement('p');
@@ -34,22 +73,62 @@ function renderMessage(content, id) {
   divEl.appendChild(p);
 }
 
+function renderHungryLog() {
+  DATA.hungryLog.innerHTML = '';
+  // Headings
+  const tr = document.createElement('tr');
+  let headings = ['Time', 'Hunger', 'Message', 'Actions'];
+  headings.forEach((heading) => {
+    let th = document.createElement('th');
+    th.textContent = heading;
+    tr.appendChild(th);
+  });
+  let tbl = document.createElement('table');
+  tbl.appendChild(tr);
+
+  // Data
+  let levels = DATA.hungryLevels;
+
+  levels.forEach((obj, index) => {
+    const hungryRow = document.createElement('tr');
+    for (key in obj) {
+      if (key !== 'date') {
+        let td = document.createElement('td');
+        td.textContent = obj[key];
+        hungryRow.appendChild(td);
+      }
+    }
+    // const buttonTD = renderEditDeleteBtn(index);
+    // const buttonTD = document.createElement('td');
+    // buttonTD.innerHTML = '<button>Edit</button><button>Delete</button>';
+    // tr.appendChild(buttonTD);
+    tbl.appendChild(hungryRow);
+  });
+  console.log(tbl);
+  console.log(DATA.hungryLevels);
+  DATA.hungryLog.appendChild(tbl);
+}
+
 function updateMacros(fat, carbs, protein) {
-  let currentDate = new Date();
   let newMacro = {
     fat: fat,
-    carbs: carbs,
     protein: protein,
-    date: currentDate.getDate(),
+    carbs: carbs,
+    date: setDate(),
     time: setTime()
   };
   DATA.macros.push(newMacro);
   renderMacros();
+  renderMacroLog();
 }
 
 function setDailyMacros() {
+  return DATA.macros.filter(macro => macro.date === setDate());
+}
+
+function setDate() {
   let currentDate = new Date();
-  return DATA.macros.filter(macro => macro.date === currentDate.getDate());
+  return currentDate.getMonth() + currentDate.getDate() + ", " + currentDate.getFullYear();
 }
 
 function setTime() {
@@ -60,22 +139,27 @@ function setTime() {
 
 const decisionMaker = (hungerLevel) => {
   let macros = setDailyMacros();
+  let date = setDate();
   let time = setTime();
+  let message;
   if (time >= "11:00" && time <= "21:00") {
     if (hungerLevel > 5) {
       if (macros.fat < macros.carbs && macros.protein < macros.carbs) {
-        renderMessage(`Good job today.You can eat anything you want.`, `output`);
+        message = `Good job today.You can eat anything you want.`;
       } else if (macros.fat > macros.protein) {
-        renderMessage(`Go eat something high in protein.`, `output`);
+        message = `Go eat something high in protein.`;
         } else {
-        renderMessage(`Go eat something high in fat.`, `output`);
+        message = `Go eat something high in fat.`, `output`;
         }
     } else {
-      renderMessage(`Wait until you're hungry to eat`, `output`);
+      message = `Wait until you're hungry to eat`, `output`;
     }
   } else {
-    renderMessage(`It's not munching time. Your interval for eating is 12pm - 9pm.`, `output`);
+    message = `It's not munching time. Your interval for eating is 12pm - 9pm.`;
   }
+  renderMessage(message, 'output');
+  DATA.hungryLevels.push({ time: time, date: date, level: hungerLevel, message: message });
+  renderHungryLog();
 }
 
 DATA.macrosForm.addEventListener('submit', (e) => {
