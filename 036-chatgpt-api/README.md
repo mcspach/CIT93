@@ -1,0 +1,3 @@
+I deleted key.js before submitting the assignment to not expose my secret key.
+
+Good practice on API calls. My object was totally wonky. I think its possible that the assignemnts are not in the proper order, because you were referrencing a past assignment that I have not compelted yet. It may have been my mistake rather than the actual order of assignments, but I did find it hard to catch up in the fetch code and had not been exposed to API calls in this cass until this assignment. 
