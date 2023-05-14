@@ -88,7 +88,7 @@ function renderEditDeleteBtn(index) {
     })
     // click edit: put the vlues into the unpit feilds, then the next submit will trigger an update rather than a new data set.
     editBtn.addEventListener('click', function (e) {
-        data = MY_DATA[index];
+        let data = MY_DATA[index];
         FORM.miles.value = data.miles;
         FORM.gallons.value = data.gallons;
         FORM.price.value = data.price;

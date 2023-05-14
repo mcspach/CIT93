@@ -1,5 +1,4 @@
 //GLOBAL OBJECT
-const FORM = document.getElementById('hungryForm');
 const DATA = {
   hungryForm: document.getElementById('hungryForm'),
   macrosForm: document.getElementById('macrosForm'),
@@ -54,10 +53,8 @@ function renderMacroLog() {
         macRow.appendChild(td);
       }
     }
-    // const buttonTD = renderEditDeleteBtn(index);
-    // const buttonTD = document.createElement('td');
-    // buttonTD.innerHTML = '<button>Edit</button><button>Delete</button>';
-    // tr.appendChild(buttonTD);
+    const buttonTD = renderButtonsMacros(index);
+    macRow.appendChild(buttonTD);
     tbl.appendChild(macRow);
   });
   console.log(tbl);
@@ -98,10 +95,8 @@ function renderHungryLog() {
         hungryRow.appendChild(td);
       }
     }
-    // const buttonTD = renderEditDeleteBtn(index);
-    // const buttonTD = document.createElement('td');
-    // buttonTD.innerHTML = '<button>Edit</button><button>Delete</button>';
-    // tr.appendChild(buttonTD);
+    const buttonTD = renderButtonsHungry(index);
+    tr.appendChild(buttonTD);
     tbl.appendChild(hungryRow);
   });
   console.log(tbl);
@@ -109,13 +104,21 @@ function renderHungryLog() {
   DATA.hungryLog.appendChild(tbl);
 }
 
-function updateMacros(fat, carbs, protein) {
+function updateMacros(fat, carbs, protein, date, time) {
+  let saveDate, saveTime;
+  if (date && time) {
+    saveDate = date;
+    saveTime = time;
+  } else {
+    saveDate = setDate();
+    saveTime = setTime();
+  }
   let newMacro = {
     fat: fat,
     protein: protein,
     carbs: carbs,
-    date: setDate(),
-    time: setTime()
+    date: saveDate,
+    time: saveTime
   };
   DATA.macros.push(newMacro);
   renderMacros();
@@ -168,7 +171,14 @@ DATA.macrosForm.addEventListener('submit', (e) => {
   const fat = Number(e.target.fat.value);
   const carbs = Number(e.target.carbs.value);
   const protein = Number(e.target.protein.value);
-  updateMacros(fat, carbs, protein);
+  if (e.target.saveDate !== '' && e.target.saveTime !== '') {
+    const date = Number(e.target.saveDate.value);
+    const time = Number(e.target.saveTime.value);
+    updateMacros(fat, carbs, protein, date, time);
+  } else {
+    updateMacros(fat, carbs, protein);
+  }
+
   DATA.macrosForm.reset();
 });
 
@@ -182,3 +192,57 @@ DATA.hungryForm.addEventListener('submit', (event) => {
 
 //displays today's macros on initial load
 renderMacros();
+
+
+function renderButtonsMacros(index) {
+  const buttonTD = document.createElement('td');
+  const editBtn = document.createElement('button');
+  editBtn.textContent = 'Edit';
+  editBtn.classList.add("btn", "btn-primary");
+  editBtn.dataset.index = index;
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.classList.add("btn", "btn-danger");
+  editBtn.dataset.index = index;
+  // add event listener for each button click
+  // click delete: find the right object. delete it.
+  deleteBtn.addEventListener('click', () => {
+    DATA.macros.splice(index, 1);
+    renderMacros();
+    renderMacroLog();
+  });
+  // click edit: put the vlues into the unpit feilds, 
+  // then the next submit will trigger an update rather than a new data set.
+  editBtn.addEventListener('click', function (e) {
+    let data = DATA.macros[index];
+    DATA.macrosForm.fat.value = data.fat;
+    DATA.macrosForm.carbs.value = data.carbs;
+    DATA.macrosForm.protein.value = data.protein;
+    DATA.macrosForm.saveDate.value = data.saveDate;
+    DATA.macrosForm.saveTime.value = data.saveTime;
+    DATA.macros.splice(index, 1);
+    updateMacros(fat, carbs, protein, date, time);
+  });
+  buttonTD.appendChild(editBtn);
+  buttonTD.appendChild(deleteBtn);
+  return buttonTD;
+}
+
+function renderButtonsHungry(index) {
+  const buttonTD = document.createElement('td');
+  const editBtn = document.createElement('button');
+  editBtn.textContent = 'Edit';
+  editBtn.dataset.index = index;
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.classList.add("btn", "btn-danger");
+  editBtn.dataset.index = index;
+  // add event listener for each button click
+  // click delete: find the right object. delete it.
+  deleteBtn.addEventListener('click', () => {
+    DATA.hungryLevels.splice(index, 1);
+    renderHungryLog();
+  });
+  buttonTD.appendChild(deleteBtn);
+  return buttonTD;
+}

@@ -2,9 +2,8 @@
 
 This application will decide whether or not to eat, and what Macro nutrient to induilge in. It first decides whether or not we are within eating hours, then decides whether or not we are hungry. If those two guards are passed, then the inner loop recommends different options based on which nutrients have been consumed at higher levels that day.
 
-Week 14:
-HUGE PROGRESS!
-- Now renders a table to the DOM each time the user inputs a new macro count. Each count will eventually have the option to be edited or deleted. 
-- Now renders a table to the DOM each time the user inputs a hunger level, which stores the hunger level, message, and time. Eventually the option will be added to delete the hunger level records.
-- I am considering whether or not to have the app record previous days and have a tab where you can view a summary of each day. 
-- Added bootstrap and some beginning styles. 
+Week 15:
+Handle Edit/Delete
+
+1. Added the ability to delete your hungryLevel records from the daily log. I decided it would not be helpful to edit these since they are using the Date API, it would make more sense to delete and record a new one, which will save with the current time and render the right message.
+2. I added the ability to edit and delete records fro  the macros log, which will allow yopu to change how much of each nutrient you have recorded at each time thoughout the day.
